@@ -5,8 +5,7 @@
   "author": "Mr.Twister<dollars0427@gmail.com>",
   "dependencies": {
     "aws-sdk": "2.1.6",
-    "imgur-node-api":"0.1.0",
-    "async":"*"
+    "imgur-node-api":"0.1.0"
   },
   "license": "MIT",
   "engines": {
