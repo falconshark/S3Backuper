@@ -1,5 +1,6 @@
 //Import modules
 var AWS = require('aws-sdk');
+var async = require('async');
 var util = require('util');
 var imgur = require('imgur-node-api');
 var path = require('path');
@@ -17,6 +18,23 @@ exports.handler = function(event, context) {
         var srcKey = event.Records[i].s3.object.key;
 
         console.log("The file which you updated is " + srcKey);
+
+        //Check the image type.
+        var typeMatch = srcKey.match(/\.([^.]*)$/);
+
+        if (!typeMatch) {
+            console.error('unable to infer image type for key ' + srcKey);
+            return;
+        }
+
+        var imageType = typeMatch[1];
+
+        if(imageType != "jpg" && imageType ! ="png"){
+
+            console.log('Skipping non-image ' + srcKey);
+
+            return;
+        }
     }
 }
 
