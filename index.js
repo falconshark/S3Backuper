@@ -18,38 +18,21 @@ exports.handler = function(event, context) {
 
         console.log("The file which you updated is " + srcKey);
 
-        //Check the image type.
-        var typeMatch = srcKey.match(/\.([^.]*)$/);
-
-        if (!typeMatch) {
-            console.error('unable to infer image type for key ' + srcKey);
-            return;
-        }
-
-        var imageType = typeMatch[1];
-
-        if(imageType != "jpg" && imageType !="png"){
-
-            console.log('Skipping non-image ' + srcKey);
-
-            return;
-        }
-
-        //Download images from S3
+        //Download file from S3
 
         s3.getObject({
             Bucket: srcBucket,
             Key: srcKey
         },upload);
 
-        function upload(err,images){
+        function upload(err,file){
 
             if(err){
                 console.log(err);
                 return;
             }
 
-            console.log(images);
+            console.log(file);
 
             context.done();
         } 
