@@ -5,7 +5,8 @@
   "author": "Mr.Twister<dollars0427@gmail.com>",
   "dependencies": {
     "aws-sdk": "2.1.7",
-    "readline-sync": "0.4.10"
+    "dropbox-node": "0.4.0",
+    "node-oauth": "0.1.3"
   },
   "license": "MIT",
   "engines": {
