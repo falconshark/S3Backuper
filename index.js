@@ -3,6 +3,12 @@ var AWS = require('aws-sdk');
 var util = require('util');
 var fs = require('fs');
 
+//Load setting file
+
+var setting = JSON.parse(fs.readFileSync('setting.json'));
+var consumer_key = setting.consumer_key;
+var consumer_secret = setting.consumer_secret;
+
 //Create S3 client
 
 var s3 = new AWS.S3();
@@ -31,6 +37,10 @@ exports.handler = function(event, context) {
                 console.log(err);
                 return;
             }
+
+            var dropbox = new DropboxClient(consumer_key, consumer_secret);
+
+            dropbox.getAccessToken(dropbox_email, dropbox_password, callback);
 
             console.log(file);
 

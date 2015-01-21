@@ -1,12 +1,10 @@
 {
   "name": "imgBackup",
-  "description": "A tool for backup image file from S3 to photobucket.",
+  "description": "A tool for backup file from S3 to dropbox.",
   "version": "0.0.1",
   "author": "Mr.Twister<dollars0427@gmail.com>",
   "dependencies": {
-    "aws-sdk": "2.1.7",
-    "dropbox-node": "0.4.0",
-    "node-oauth": "0.1.3"
+    "aws-sdk": "2.1.7"
   },
   "license": "MIT",
   "engines": {
