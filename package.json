@@ -5,7 +5,8 @@
   "author": "Mr.Twister<dollars0427@gmail.com>",
   "dependencies": {
     "aws-sdk": "2.1.7",
-    "googleapis": "*"
+    "googleapis": "1.1.1.1",
+    "readline-sync": "0.4.10"
   },
   "license": "MIT",
   "engines": {
