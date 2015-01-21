@@ -1,11 +1,10 @@
 {
   "name": "imgBackup",
-  "description": "A tool for backup image file from S3 to imgur.",
+  "description": "A tool for backup image file from S3 to photobucket.",
   "version": "0.0.1",
   "author": "Mr.Twister<dollars0427@gmail.com>",
   "dependencies": {
-    "aws-sdk": "2.1.6",
-    "imgur-node-api":"0.1.0"
+    "aws-sdk": "2.1.7"
   },
   "license": "MIT",
   "engines": {
