@@ -1,2 +1,2 @@
 # imgBackup
-A tool for backup image file from S3 to google drive by using AWS Lambda.
+A tool for backup file from S3 to dropbox by using AWS Lambda.
