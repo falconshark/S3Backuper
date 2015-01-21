@@ -1,8 +1,7 @@
 //Import modules
 var AWS = require('aws-sdk');
 var util = require('util');
-var imgur = require('imgur-node-api');
-var path = require('path');
+var fs = require('fs');
 
 //Create S3 client
 
