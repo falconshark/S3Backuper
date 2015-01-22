@@ -1,51 +1,57 @@
 //Import modules
 var AWS = require('aws-sdk');
 var util = require('util');
+var dbox = require("dbox");
 var fs = require('fs');
 
-//Load setting file
-
+//Load Setting
 var setting = JSON.parse(fs.readFileSync('setting.json'));
 var consumer_key = setting.consumer_key;
 var consumer_secret = setting.consumer_secret;
+var app = dbox.app({ "app_key": consumer_key, "app_secret": consumer_secret})
 
-//Create S3 client
+//Load dropbox's access token
+var token = JSON.parse(fs.readFileSync('token.json'));
+var client = app.client(token);
 
+//Create S3 client 
 var s3 = new AWS.S3();
 
 //Create event handler for S3
 exports.handler = function(event, context) {
     console.log("Reading options from event:\n", util.inspect(event, {depth: 5}));
-    
-    for (i = 0; i < event.Records.length; i++){
 
-        var srcBucket = event.Records[i].s3.bucket.name;
-        var srcKey = event.Records[i].s3.object.key;
+        var srcBucket = event.Records[0].s3.bucket.name;
+        var srcKey = event.Records[0].s3.object.key;
 
         console.log("The file which you updated is " + srcKey);
 
-        //Download file from S3
+        //Download file from S3, and save it to buffer.
 
         s3.getObject({
             Bucket: srcBucket,
             Key: srcKey
-        },upload);
+        },toDropbox);
 
-        function upload(err,file){
+        function toDropbox(err,file){
 
             if(err){
                 console.log(err);
                 return;
             }
 
-            var dropbox = new DropboxClient(consumer_key, consumer_secret);
+            //You can change it to your own app's folder.
 
-            dropbox.getAccessToken(dropbox_email, dropbox_password, callback);
+            var path = "/s3Backuper/" + srcKey;
 
-            console.log(file);
+            //Upload the file to 
 
-            context.done();
+            client.put(path,file.Body,upload);
         } 
-    }
+
+        function upload(status,reply){
+
+            console.log(reply);
+        }
 }
 
