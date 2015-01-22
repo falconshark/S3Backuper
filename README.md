@@ -1,5 +1,5 @@
 # S3Backuper
-A tool for backup file from S3 to dropbox by using AWS Lambda.
+A example of using AWS Lambda, which can auto backup S3 file to dropbox.
 
 ###Installation
 *Note: Before install it, you should install node.js at you computer first. http://nodejs.org/download/*
