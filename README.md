@@ -16,7 +16,7 @@ An example of using AWS Lambda, which can auto backup S3 file to dropbox.
     
 3. Copy and edit the setting file.You must change the consumer_key and consumer_secret to your own:
 
-    `$ cp setting.json.example.json setting.json`
+    `$ cp setting.json.example setting.json`
 
     `$ vi setting.json`
     
